@@ -26,11 +26,29 @@
 
 ;; This package is test helper functions for major/minor modes.
 
+;; ## Macro
+;;
+;; ### mode-test-with-buffer
+;;
+;;     (ert-deftest set-major-mode-by-shebang ()
+;;       (dolist (shebang '("#!/usr/bin/php"
+;;                          "#!/usr/bin/env php"))
+;;         (should
+;;          (eq
+;;           'php-mode
+;;           (mode-test-with-buffer "foo"
+;;             (insert (mapconcat #'identity
+;;                                (list shebang "<?php echo 'Hello!', PHP_EOL;" "")
+;;                                "\n"))
+;;             (set-auto-mode)
+;;             major-mode)))))
+;;
+
 ;;; Code:
 (require 'cl-lib)
 (require 'f)
 
-;;
+;; Customize
 (defgroup mode-test nil
   "Test helpers for major/minor modes"
   :group 'maint
