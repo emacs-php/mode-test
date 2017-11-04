@@ -63,6 +63,18 @@
                          function))
   :group 'mode-test)
 
+;; Utility functions
+(defun mode-test--parse-list-file (file-path)
+  "Return list from `FILE-PATH'."
+  (let (sexp)
+    (with-temp-buffer
+      (insert-file file-path)
+      (setq sexp
+            (map-merge-with 'list (lambda (a b) (map-merge 'list a b))
+                            sexp
+                            (read (current-buffer)))))
+    sexp))
+
 ;; Macros
 (defmacro mode-test-with-buffer (file &rest body)
   "Create `FILE' buffer and valute `BODY'."
