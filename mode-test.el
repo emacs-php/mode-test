@@ -70,16 +70,6 @@
   `(with-temp-buffer
      (let ((buffer-file-name ,file))
        ,@body)))
-
-;; (defmacro mode-test-with-buffer-file (file &rest body)
-;;   (declare (indent 1))
-;;   (let* ((temp-file (f-join temporary-file-directory file)))
-;;     (f-touch temp-file)
-;;     `(prog1 (with-temp-file ,temp-file
-;;               (let ((buffer-file-name ,temp-file))
-;;                 ,@body))
-;;        (f-delete ,temp-file))))
-
 
 ;; Benchmark
 (defun mode-test-benchmark--run (methods)
