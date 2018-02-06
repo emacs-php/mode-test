@@ -68,7 +68,7 @@
   "Return list from `FILE-PATH'."
   (let (sexp)
     (with-temp-buffer
-      (insert-file file-path)
+      (insert-file-contents file-path)
       (setq sexp
             (map-merge-with 'list (lambda (a b) (map-merge 'list a b))
                             sexp
